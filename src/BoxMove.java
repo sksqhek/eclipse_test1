@@ -6,7 +6,7 @@ class MyFrame extends JFrame
   private JButton button1, button2; 
   private JPanel panel1=new JPanel(); 
   private JPanel panel2=new JPanel(); 
-  static int x=200,y=50; 
+  static int x=100,y=50; 
   public MyFrame() 
   { 
     this.setTitle("박스 움직이기"); 
