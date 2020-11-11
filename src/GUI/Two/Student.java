@@ -8,6 +8,7 @@ public class Student extends Person{
 	private static final long serialVersionUID = 2L;
 	private String ID;
 	private String className;
+	private String unique;
 	
 	public Student() {}
 
@@ -23,7 +24,7 @@ public class Student extends Person{
 
 	@Override
 	public String getID() {
-		return null;
+		return ID;
 	}
 
 	public String getClassName() {
@@ -32,7 +33,29 @@ public class Student extends Person{
 
 	public void setClassName(String className) {
 		this.className = className;
-	}	
+	}
+	
+
+	@Override
+	public void inputInfo() {
+		
+		try {
+			super.inputInfo();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("[ST]Grade : ");
+		String id = InputValue.InputStr();
+		
+		setID(id);
+		
+		System.out.println("Class : ");
+		String classname = InputValue.InputStr();
+		
+		setClassName(classname);
+		
+	}
 
 	@Override
 	public String getInfo() {
@@ -45,7 +68,21 @@ public class Student extends Person{
 	public void printAll() {
 		System.out.println(this.getInfo());
 	}
-	
-	
 
+	@Override
+	public String getUnique() {
+		return unique;
+	}
+
+	@Override
+	public void setUnique(String unique) {
+		this.unique = unique;
+	}
+
+	@Override
+	public String getOther()
+	{
+		// TODO Auto-generated method stub
+		return className;
+	}
 }

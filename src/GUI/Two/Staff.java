@@ -8,6 +8,7 @@ public class Staff extends Person{
 	private static final long serialVersionUID = 2L;
 	private String ID;
 	private String dept;
+	private String unique;
 
 	public Staff() {
 		super();
@@ -20,7 +21,7 @@ public class Staff extends Person{
 
 	@Override
 	public String getID() {
-		return null;
+		return ID;
 	}
 	
 	public String getDept() {
@@ -29,6 +30,24 @@ public class Staff extends Person{
 
 	public void setDept(String dept) {
 		this.dept = dept;
+	}
+
+
+	@Override
+	public void inputInfo() {
+		
+		try {
+			super.inputInfo();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("[STF]Grade : ");
+		String id = InputValue.InputStr();
+		setID(id);
+		
+		System.out.println("Dept : ");
+		String Dept = InputValue.InputStr();
+		setDept(Dept);
 	}
 
 	@Override
@@ -41,5 +60,22 @@ public class Staff extends Person{
 	@Override
 	public void printAll() {
 		System.out.println(this.getInfo());
+	}
+
+	@Override
+	public String getUnique() {
+		return unique;
+	}
+
+	@Override
+	public void setUnique(String unique) {
+		this.unique = unique;
+	}
+
+	@Override
+	public String getOther()
+	{
+		// TODO Auto-generated method stub
+		return dept;
 	}
 }

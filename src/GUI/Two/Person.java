@@ -36,8 +36,22 @@ public abstract class Person implements Serializable {
 	}
 	
 	public abstract void setID(String id);
-	public abstract String getID();	
+	public abstract String getID();
 	
+	public abstract String getUnique();
+	public abstract void setUnique(String unique);
+
+	public void inputInfo() {
+		System.out.println("Name : ");
+		String name = InputValue.InputStr();
+		
+		setName(name);
+		
+		System.out.println("Address : ");
+		String Address = InputValue.InputStr();
+		
+		setAddress(Address);
+	}
 	
 	public String getInfo() {
 		String info="\nName : "+name+"\nAddress :"+address;
@@ -50,10 +64,7 @@ public abstract class Person implements Serializable {
 	
 	public String toString() {
 		return name;
-	}
-	
-	
-	
-	
-
+	}	
+		
+	public abstract String getOther();
 }

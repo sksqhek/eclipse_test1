@@ -1,28 +1,63 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Date;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-public class Test
+public class Test extends Thread
 {
-
-	static public void main(String args[])
+	static JFrame f = new JFrame();
+	static JButton btn1 = new JButton();
+	static JButton btn2 = new JButton();
+	static int t = 0;
+	static boolean tmrToggle = true;	
+	
+	@Override
+	public void run()
 	{
-		try {
-			BufferedReader fr = new BufferedReader(new FileReader("test.txt"));
-
-			Date date = new Date();
-
-			// 읽을때는 읽은 시간을 표시해주고
-			System.out.println("읽은 시간:" + date);
-			String s = fr.readLine();//파일에서 한줄 읽기
-			System.out.println("읽은 내용:" + s);
-
-			fr.close();
-		} catch (IOException e) {
-			// 존재하지 않는 파일은 파일이 존재하지않는다는 예외표시
-			System.out.println("파일 없음");
+		try
+		{
+			while (true)
+			{	
+				if (tmrToggle == true)
+				{					
+					t += 1;
+					System.out.println("" + t);
+				}
+				Thread.sleep(1000);
+			}
+		} catch (InterruptedException e)
+		{
 		}
+	}
 
+	public static void main(String[] args)
+	{		
+		Test test = new Test();
+		test.start();
+		f.setVisible(true);
+		f.setPreferredSize(new Dimension(500, 500));
+		f.setSize(500, 500);
+		f.setLocationRelativeTo(null);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setLayout(null);
+		btn1.setBounds(0, 0, 100, 100);
+		btn1.setText("start");
+		btn1.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{				
+				tmrToggle = true;
+			}
+		});
+		btn2.setBounds(200, 0, 100, 100);
+		btn2.setText("pause");
+		btn2.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{				
+				tmrToggle = false;				
+			}
+		});
+		f.add(btn1);
+		f.add(btn2);
 	}
 }
